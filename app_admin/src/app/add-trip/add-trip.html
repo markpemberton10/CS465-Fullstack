@@ -1,0 +1,160 @@
+
+<div class="row justify-content-center">
+  <div class="col-md-5">
+
+    <h2 class="text-center mb-4">Add Trip</h2>
+
+    <form [formGroup]="addTripFormGroup" (ngSubmit)="onSubmit()">
+
+      <!-- CODE -->
+      <div class="mb-3">
+        <label class="form-label" for="code">Code:</label>
+
+        <input
+          id="code"
+          type="text"
+          class="form-control"
+          formControlName="code"
+          placeholder="Code"
+          [ngClass]="{ 'is-invalid': submitted && f['code'].errors }"
+        />
+
+        <div class="invalid-feedback" *ngIf="submitted && f['code'].errors">
+          Trip Code is required
+        </div>
+      </div>
+
+      <!-- NAME -->
+      <div class="mb-3">
+        <label class="form-label" for="name">Name:</label>
+
+        <input
+          id="name"
+          type="text"
+          class="form-control"
+          formControlName="name"
+          placeholder="Name"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        />
+
+        <div class="invalid-feedback" *ngIf="submitted && f['name'].errors">
+          Name is required
+        </div>
+      </div>
+
+      <!-- LENGTH -->
+      <div class="mb-3">
+        <label class="form-label" for="length">Length:</label>
+
+        <input
+          id="length"
+          type="text"
+          class="form-control"
+          formControlName="length"
+          placeholder="Length"
+          [ngClass]="{ 'is-invalid': submitted && f['length'].errors }"
+        />
+
+        <div class="invalid-feedback" *ngIf="submitted && f['length'].errors">
+          Length is required
+        </div>
+      </div>
+
+      <!-- START -->
+      <div class="mb-3">
+        <label class="form-label" for="start">Start:</label>
+
+        <input
+          id="start"
+          type="text"
+          class="form-control"
+          formControlName="start"
+          placeholder="Start"
+          [ngClass]="{ 'is-invalid': submitted && f['start'].errors }"
+        />
+
+        <div class="invalid-feedback" *ngIf="submitted && f['start'].errors">
+          Start is required
+        </div>
+      </div>
+
+      <!-- RESORT -->
+      <div class="mb-3">
+        <label class="form-label" for="resort">Resort:</label>
+
+        <input
+          id="resort"
+          type="text"
+          class="form-control"
+          formControlName="resort"
+          placeholder="Resort"
+          [ngClass]="{ 'is-invalid': submitted && f['resort'].errors }"
+        />
+
+        <div class="invalid-feedback" *ngIf="submitted && f['resort'].errors">
+          Resort is required
+        </div>
+      </div>
+
+      <!-- PER PERSON -->
+      <div class="mb-3">
+        <label class="form-label" for="perPerson">Per Person:</label>
+
+        <input
+          id="perPerson"
+          type="text"
+          class="form-control"
+          formControlName="perPerson"
+          placeholder="Per Person"
+          [ngClass]="{ 'is-invalid': submitted && f['perPerson'].errors }"
+        />
+
+        <div class="invalid-feedback" *ngIf="submitted && f['perPerson'].errors">
+          Per Person is required
+        </div>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="mb-3">
+        <label class="form-label" for="image">Image:</label>
+
+        <input
+          id="image"
+          type="text"
+          class="form-control"
+          formControlName="image"
+          placeholder="Image"
+          [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
+        />
+
+        <div class="invalid-feedback" *ngIf="submitted && f['image'].errors">
+          Image is required
+        </div>
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="mb-3">
+        <label class="form-label" for="description">Description:</label>
+
+        <textarea
+          id="description"
+          rows="4"
+          class="form-control"
+          formControlName="description"
+          placeholder="Description"
+          [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+        ></textarea>
+
+        <div class="invalid-feedback" *ngIf="submitted && f['description'].errors">
+          Description is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">
+        Save
+      </button>
+
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" routerLink="/">
+      Travlr Getaways Admin
+    </a>
+
+    <div class="d-flex gap-2">
+
+      <a class="btn btn-outline-light btn-sm" routerLink="/list-trips">
+        Trips
+      </a>
+
+      <a class="btn btn-outline-light btn-sm" routerLink="/add-trip">
+        Add Trip
+      </a>
+
+    </div>
+
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
