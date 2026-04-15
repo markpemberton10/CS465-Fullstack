@@ -1,25 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication';
 import { Trip } from '../models/trip';
 
 @Component({
   selector: 'app-trip-card',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './trip-card.component.html',
-  styleUrl: './trip-card.component.css'
+  styleUrls: ['./trip-card.component.css']
 })
-export class TripCardComponent implements OnInit {
+export class TripCardComponent {
 
   @Input() trip!: Trip;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {}
 
-  ngOnInit(): void {}
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
+  }
 
-  public editTrip(trip: Trip) {
-    localStorage.setItem('tripCode', trip.tripCode);
-    this.router.navigate(['edit-trip']);
+  public editTrip(trip: Trip): void {
+    this.router.navigate(['/edit-trip', trip.Code]);
   }
 }

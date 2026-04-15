@@ -22,30 +22,37 @@ export class TripListingComponent implements OnInit {
     private router: Router
   ) {}
 
-  addTrip(): void {
-    this.router.navigate(['add-trip']);
+  ngOnInit(): void {
+    this.loadTrips();
   }
 
-  private getStuff(): void {
-    this.tripDataService.getTrips().subscribe({
-      next: (value: Trip[]) => {
-        this.trips = value;
+  // 🔥 CENTRALIZED LOAD FUNCTION
+  loadTrips(): void {
+  this.tripDataService.getTrips()
+    .then((value: Trip[]) => {
+      this.trips = value;
 
-        this.message = value.length > 0
-          ? `There are ${value.length} trips available.`
-          : 'No trips retrieved from database';
+      this.message = value.length > 0
+        ? `There are ${value.length} trips available.`
+        : 'No trips retrieved from database';
 
-        console.log(this.message);
-        console.log('Trips:', value);
-      },
-      error: (error) => {
-        console.log('Error:', error);
-      }
+      console.log(this.message);
+    })
+    .catch((error: any) => {
+      console.log('Error:', error);
+    });
+}
+
+  // 🔥 ADD TRIP NAVIGATION
+  addTrip(): void {
+    this.router.navigate(['add-trip']).then(() => {
+      // refresh after navigation returns
+      this.loadTrips();
     });
   }
 
-  ngOnInit(): void {
-    console.log('ngOnInit fired');
-    this.getStuff();
+  // 🔥 REFRESH AFTER ANY ACTION
+  refresh(): void {
+    this.loadTrips();
   }
 }

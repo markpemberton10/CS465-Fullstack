@@ -1,5 +1,5 @@
 export interface Trip {
-  tripCode: string;
+  Code: string;
   name: string;
   resort: string;
   image: string;
